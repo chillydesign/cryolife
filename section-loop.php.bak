@@ -1,0 +1,106 @@
+				<?php 
+					$section_loop = new WP_Query(
+					 array(
+					 'post_type' => 'section', 
+					 'category_name' => $category,
+					 'posts_per_page' => -1,
+					 'orderby' => 'menu_order')
+					 );
+				 ?>
+
+				<?php while ( $section_loop->have_posts() ) : $section_loop->the_post(); ?>
+				<?php $section_class = get_field('section_class'); ?>
+				<?php $section_template = get_field('section_template'); ?>
+				<section class="<?php echo $section_template . ' '; if(isset($section_class))  { echo implode(' ', $section_class);  }  ?>">
+					<?php if ($section_template == 'defaut') {
+						$content = get_field('content-default'); ?>
+						<div class="wrapper">
+							<?php echo $content; ?>
+						</div>
+					<?php } elseif ($section_template == '2colonnes') {
+						$topparagraph = get_field('top-paragraph');
+						$colonne1 = get_field('colonne1');
+						$colonne2 = get_field('colonne2'); ?>
+						<div class="wrapper">
+							<div class="top-paragraph"><?php echo $topparagraph; ?></div>
+							<div class="row">
+								<div class="col-sm-6"><?php echo $colonne1; ?></div>
+								<div class="col-sm-6"><?php echo $colonne2; ?></div>
+							</div>
+						</div>
+					<?php } elseif ($section_template == '3colonnes') {
+						$topparagraph = get_field('top-paragraph');
+						$colonne1 = get_field('colonne1');
+						$colonne2 = get_field('colonne2');
+						$colonne3 = get_field('colonne3'); ?>
+						<div class="wrapper">
+							<div class="top-paragraph"><?php echo $topparagraph; ?></div>
+							<div class="row">
+								<div class="col-sm-4"><?php echo $colonne1; ?></div>
+								<div class="col-sm-4"><?php echo $colonne2; ?></div>
+								<div class="col-sm-4"><?php echo $colonne3; ?></div>
+							</div>
+						</div>
+					<?php } elseif ($section_template == 'leftpiccol') { 
+						$topparagraph = get_field('top-paragraph');
+						$photo = get_field('photo');
+						$colonne2 = get_field('colonne2'); ?>
+						<div class="wrapper">
+							<div class="top-paragraph"><?php echo $topparagraph; ?></div>
+							<div class="row">
+								<div class="col-sm-6" style="padding-right: 30px;"><?php if( !empty($photo) ) { ?><img src="<?php echo $photo['url']; ?>" alt="<?php echo $photo['alt']; ?>" /><?php } ?></div>
+								<div class="col-sm-6"><?php echo $colonne2; ?></div>
+							</div>
+						</div>
+					<?php } elseif ($section_template == 'rightpiccol') { 
+						$topparagraph = get_field('top-paragraph');
+						$colonne1 = get_field('colonne1'); 
+						$photo = get_field('photo'); ?>
+						<div class="wrapper">
+							<div class="top-paragraph"><?php echo $topparagraph; ?></div>
+							<div class="row">
+								<div class="col-sm-8"><?php echo $colonne1; ?></div>
+								<div class="col-sm-4" style="padding-right: 30px;"><?php if( !empty($photo) ) { ?><img src="<?php echo $photo['url']; ?>" alt="<?php echo $photo['alt']; ?>" /><?php } ?></div>
+							</div>
+						</div>
+					<?php } elseif ($section_template == 'projets') { ?>
+						<?php $topparagraph = get_field('top-paragraph'); ?>
+						<div class="wrapper">
+							<div class="top-paragraph"><?php echo $topparagraph; ?></div>
+						</div>
+						<?php $projet_loop = new WP_Query(
+						 array(
+							 'post_type' => 'projet', 
+							 'posts_per_page' => 4)
+						 ); ?>
+						 <div class="wrapper-sm">
+						 	<div class="row">
+								 <?php while ( $projet_loop->have_posts() ) : $projet_loop->the_post(); ?>
+								 <div class="col-md-3 col-sm-6" style="margin-bottom:30px;">
+								 	<a href="<?php the_permalink(); ?>">
+								 		<?php $id = get_post_thumbnail_id( $post_id ); ?>
+								 		<?php $url = wp_get_attachment_image_src( $id ,  'large' )[0]; ?>
+									 	<div style="width:100%; padding: 40%; background: url(<?php echo $url; ?>) no-repeat; background-size: cover;"></div>
+							 			<h4><?php the_title(); ?></h4>
+									 </a>
+								 </div>
+								 <?php endwhile; ?>
+							</div>
+						</div>
+					<?php } elseif ($section_template == 'slider') { 
+						$slider_shortcode = get_field('slider_shortcode');
+						$slider_text = get_field('slider_text'); 
+						echo do_shortcode($slider_shortcode); ?>
+						<div class="wrapper">
+							<div class="slider_text"><?php echo $slider_text ?></div>
+						</div>
+					<?php } elseif ($section_template == 'map') { 
+						$coordinates = strval(get_field('google_map'));
+						$google_map = '[chilly_map location="' . $coordinates . '"]';
+						echo do_shortcode($google_map);
+						
+					} ?>
+					
+				</section>
+	
+				<?php endwhile; ?>
