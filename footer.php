@@ -25,8 +25,9 @@
 						<div class="col-xs-4">
 							<span class="suivez-nous"> Suivez-nous</span>
 							<span style="display:inline-block">
-							<a href="https://facebook.com/cryolife.ch" class="facebooklink">Facebook</a>
-							<a href="https://twitter.com/cryolife_ch" class="twitterlink">Twitter</a>
+							<a target="_blank" href="https://facebook.com/cryolife.ch" class="facebooklink">Facebook</a>
+							<a target="_blank" href="https://twitter.com/cryolife_ch" class="twitterlink">Twitter</a>
+							<a target="_blank" href="https://www.instagram.com/cryolifegeneve" class="instagramlink">Instagram</a>
 						</span>
 						</div>
 						<div class="col-xs-8">
@@ -44,7 +45,7 @@
         <?php if ($show_popup): ?>
             <div class="popup_message" id="home_page_message" >
             	<?php //echo do_shortcode('[contact-form-7 id="411" title="Inscription liste"]'); ?>
-                <?php echo get_field('popup', 'option'); ?>
+        <?php echo get_field('popup', 'option'); ?>
         <a href="#" class="cancel_message">X</a>
         </div>
         <?php endif; ?>

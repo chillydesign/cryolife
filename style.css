@@ -311,8 +311,10 @@ footer {/* position: fixed; bottom: 0; left: 0;*/ width: 100%}
 .suivez-nous {margin-right: 10px; display: inline-block; margin-bottom: 10px;}
 .facebooklink {font-size: 0; background-image:url(img/facebook-grey.png); background-size: 30px; height: 30px; width: 30px; background-repeat: no-repeat;background-position: center; display: inline-block; margin-right: 10px; position: relative;top: -7px;}
 .facebooklink:hover {background-image:url(img/facebook-white.png);}
-.twitterlink {font-size: 0; background-image:url(img/twitter-grey.png); background-size: 30px; height: 30px; width: 30px; background-repeat: no-repeat;background-position: center; display: inline-block; position: relative;top: -7px;}
+.twitterlink {font-size: 0; background-image:url(img/twitter-grey.png); background-size: 30px; height: 30px; width: 30px; background-repeat: no-repeat;background-position: center; display: inline-block; margin-right: 10px; position: relative;top: -7px;}
 .twitterlink:hover {background-image:url(img/twitter-white.png);}
+.instagramlink {font-size: 0; background-image:url(img/instagram-grey.png); background-size: 30px; height: 30px; width: 30px; background-repeat: no-repeat;background-position: center; display: inline-block; position: relative;top: -7px;}
+.instagramlink:hover {background-image:url(img/instagram-white.png);}
 a#bsf {
     color: #818181;
 }
@@ -427,7 +429,7 @@ section {padding: 40px 0 20px;}
 .parallaxbackground, .parallaxbackground h1, .parallaxbackground h2, .parallaxbackground h3 {color: white;}
 
 
-section.snowflakes.noborder {
+section.snowflakes {
     background: url(img/cryo-snowflakes.jpg); background-size: contain; background-repeat: no-repeat; background-position: center; padding: 0;
 }
 
