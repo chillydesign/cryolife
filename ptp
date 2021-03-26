@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ssh webfactor << EOF
+cd ~/cryolife.ch/wp-content/themes/cryolife/;
+git pull origin master;
+echo "DONE!";
+EOF
