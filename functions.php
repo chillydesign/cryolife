@@ -298,7 +298,7 @@ function html5blankcomments($comment, $args, $depth) {
             <div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>">
                     <?php
                     printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'), '  ', '');
-                                                                                        ?>
+                                                                                                ?>
             </div>
 
             <?php comment_text() ?>
@@ -492,7 +492,7 @@ function remove_json_api() {
     // add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
 
 }
-// add_action( 'after_setup_theme', 'remove_json_api' );
+add_action('after_setup_theme', 'remove_json_api');
 
 
 
