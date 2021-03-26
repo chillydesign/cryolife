@@ -14,13 +14,11 @@
     Theme Support
 \*------------------------------------*/
 
-if (!isset($content_width))
-{
+if (!isset($content_width)) {
     $content_width = 900;
 }
 
-if (function_exists('add_theme_support'))
-{
+if (function_exists('add_theme_support')) {
     // Add Menu Support
     add_theme_support('menus');
 
@@ -62,33 +60,31 @@ if (function_exists('add_theme_support'))
 \*------------------------------------*/
 
 // HTML5 Blank navigation
-function html5blank_nav()
-{
+function html5blank_nav() {
     wp_nav_menu(
-    array(
-        'theme_location'  => 'header-menu',
-        'menu'            => '',
-        'container'       => 'div',
-        'container_class' => 'menu-{menu slug}-container',
-        'container_id'    => '',
-        'menu_class'      => 'menu',
-        'menu_id'         => '',
-        'echo'            => true,
-        'fallback_cb'     => 'wp_page_menu',
-        'before'          => '',
-        'after'           => '',
-        'link_before'     => '',
-        'link_after'      => '',
-        'items_wrap'      => '<ul>%3$s</ul>',
-        'depth'           => 0,
-        'walker'          => ''
+        array(
+            'theme_location'  => 'header-menu',
+            'menu'            => '',
+            'container'       => 'div',
+            'container_class' => 'menu-{menu slug}-container',
+            'container_id'    => '',
+            'menu_class'      => 'menu',
+            'menu_id'         => '',
+            'echo'            => true,
+            'fallback_cb'     => 'wp_page_menu',
+            'before'          => '',
+            'after'           => '',
+            'link_before'     => '',
+            'link_after'      => '',
+            'items_wrap'      => '<ul>%3$s</ul>',
+            'depth'           => 0,
+            'walker'          => ''
         )
     );
 }
 
 // Load HTML5 Blank scripts (header.php)
-function html5blank_header_scripts()
-{
+function html5blank_header_scripts() {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
 
         wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
@@ -103,8 +99,7 @@ function html5blank_header_scripts()
 }
 
 // Load HTML5 Blank conditional scripts
-function html5blank_conditional_scripts()
-{
+function html5blank_conditional_scripts() {
     if (is_page('pagenamehere')) {
         wp_register_script('scriptname', get_template_directory_uri() . '/js/scriptname.js', array('jquery'), '1.0.0'); // Conditional script(s)
         wp_enqueue_script('scriptname'); // Enqueue it!
@@ -112,8 +107,7 @@ function html5blank_conditional_scripts()
 }
 
 // Load HTML5 Blank styles
-function html5blank_styles()
-{
+function html5blank_styles() {
     wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
     wp_enqueue_style('normalize'); // Enqueue it!
 
@@ -122,8 +116,7 @@ function html5blank_styles()
 }
 
 // Register HTML5 Blank Navigation
-function register_html5_menu()
-{
+function register_html5_menu() {
     register_nav_menus(array( // Using array to specify more menus if needed
         'header-menu' => __('Header Menu', 'html5blank'), // Main Navigation
         'sidebar-menu' => __('Sidebar Menu', 'html5blank'), // Sidebar Navigation
@@ -132,27 +125,23 @@ function register_html5_menu()
 }
 
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
-function my_wp_nav_menu_args($args = '')
-{
+function my_wp_nav_menu_args($args = '') {
     $args['container'] = false;
     return $args;
 }
 
 // Remove Injected classes, ID's and Page ID's from Navigation <li> items
-function my_css_attributes_filter($var)
-{
+function my_css_attributes_filter($var) {
     return is_array($var) ? array() : '';
 }
 
 // Remove invalid rel attribute values in the categorylist
-function remove_category_rel_from_category_list($thelist)
-{
+function remove_category_rel_from_category_list($thelist) {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
 
 // Add page slug to body class, love this - Credit: Starkers Wordpress Theme
-function add_slug_to_body_class($classes)
-{
+function add_slug_to_body_class($classes) {
     global $post;
     if (is_home()) {
         $key = array_search('blog', $classes);
@@ -169,8 +158,7 @@ function add_slug_to_body_class($classes)
 }
 
 // If Dynamic Sidebar Exists
-if (function_exists('register_sidebar'))
-{
+if (function_exists('register_sidebar')) {
     // Define Sidebar Widget Area 1
     register_sidebar(array(
         'name' => __('Widget Area 1', 'html5blank'),
@@ -195,8 +183,7 @@ if (function_exists('register_sidebar'))
 }
 
 // Remove wp_head() injected Recent Comment styles
-function my_remove_recent_comments_style()
-{
+function my_remove_recent_comments_style() {
     global $wp_widget_factory;
     remove_action('wp_head', array(
         $wp_widget_factory->widgets['WP_Widget_Recent_Comments'],
@@ -205,8 +192,7 @@ function my_remove_recent_comments_style()
 }
 
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
-function html5wp_pagination()
-{
+function html5wp_pagination() {
     global $wp_query;
     $big = 999999999;
     echo paginate_links(array(
@@ -224,14 +210,12 @@ function html5wp_index($length) // Create 20 Word Callback for Index page Excerp
 }
 
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
-function html5wp_custom_post($length)
-{
+function html5wp_custom_post($length) {
     return 40;
 }
 
 // Create the Custom Excerpts callback
-function html5wp_excerpt($length_callback = '', $more_callback = '')
-{
+function html5wp_excerpt($length_callback = '', $more_callback = '') {
     global $post;
     if (function_exists($length_callback)) {
         add_filter('excerpt_length', $length_callback);
@@ -247,56 +231,49 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
 }
 
 // Custom View Article link to Post
-function html5_blank_view_article($more)
-{
+function html5_blank_view_article($more) {
     global $post;
     return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
 }
 
 // Remove Admin bar
-function remove_admin_bar()
-{
+function remove_admin_bar() {
     return false;
 }
 
 // Remove 'text/css' from our enqueued stylesheet
-function html5_style_remove($tag)
-{
+function html5_style_remove($tag) {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
-function remove_thumbnail_dimensions( $html )
-{
+function remove_thumbnail_dimensions($html) {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
 
 // Custom Gravatar in Settings > Discussion
-function html5blankgravatar ($avatar_defaults)
-{
+function html5blankgravatar($avatar_defaults) {
     $myavatar = get_template_directory_uri() . '/img/gravatar.jpg';
     $avatar_defaults[$myavatar] = "Custom Gravatar";
     return $avatar_defaults;
 }
 
 // Threaded Comments
-function enable_threaded_comments()
-{
+function enable_threaded_comments() {
     if (!is_admin()) {
-        if (is_singular() AND comments_open() AND (get_option('thread_comments') == 1)) {
+        if (is_singular() and comments_open() and (get_option('thread_comments') == 1)) {
             wp_enqueue_script('comment-reply');
         }
     }
 }
 
 // Custom Comments Callback
-function html5blankcomments($comment, $args, $depth)
-{
+function html5blankcomments($comment, $args, $depth) {
     $GLOBALS['comment'] = $comment;
     extract($args, EXTR_SKIP);
 
-    if ( 'div' == $args['style'] ) {
+    if ('div' == $args['style']) {
         $tag = 'div';
         $add_below = 'comment';
     } else {
@@ -305,34 +282,34 @@ function html5blankcomments($comment, $args, $depth)
     }
 ?>
     <!-- heads up: starting < for the html tag (li or div) in the next line: -->
-    <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
-    <?php if ( 'div' != $args['style'] ) : ?>
-    <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
-    <?php endif; ?>
-    <div class="comment-author vcard">
-    <?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
-    <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-    </div>
-<?php if ($comment->comment_approved == '0') : ?>
-    <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
-    <br />
-<?php endif; ?>
+    <<?php echo $tag ?> <?php comment_class(empty($args['has_children']) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+        <?php if ('div' != $args['style']) : ?>
+            <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+            <?php endif; ?>
+            <div class="comment-author vcard">
+                <?php if ($args['avatar_size'] != 0) echo get_avatar($comment, $args['180']); ?>
+                <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+            </div>
+            <?php if ($comment->comment_approved == '0') : ?>
+                <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+                <br />
+            <?php endif; ?>
 
-    <div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-        <?php
-            printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
-        ?>
-    </div>
+            <div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)) ?>">
+                    <?php
+                    printf(__('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'), '  ', '');
+                                                                                        ?>
+            </div>
 
-    <?php comment_text() ?>
+            <?php comment_text() ?>
 
-    <div class="reply">
-    <?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-    </div>
-    <?php if ( 'div' != $args['style'] ) : ?>
-    </div>
-    <?php endif; ?>
-<?php }
+            <div class="reply">
+                <?php comment_reply_link(array_merge($args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+            </div>
+            <?php if ('div' != $args['style']) : ?>
+            </div>
+        <?php endif; ?>
+    <?php }
 
 /*------------------------------------*\
     Actions + Filters + ShortCodes
@@ -399,8 +376,7 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 \*------------------------------------*/
 
 // Shortcode Demo with Nested Capability
-function html5_shortcode_demo($atts, $content = null)
-{
+function html5_shortcode_demo($atts, $content = null) {
     return '<div class="shortcode-demo">' . do_shortcode($content) . '</div>'; // do_shortcode allows for nested Shortcodes
 }
 
@@ -411,9 +387,8 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 }
 
 add_action('init', 'gmap_header_scripts'); // Add Custom Scripts to wp_head
-function gmap_header_scripts()
-{
-    if ( !is_admin()) {
+function gmap_header_scripts() {
+    if (!is_admin()) {
         $g_key = 'AIzaSyBeCAXB9JW5PtxI6qBImAC7yOxctCiB4Pk';
         wp_register_script('googlemapsapi', '//maps.google.com/maps/api/js?key=' . $g_key, array(), null);
         wp_enqueue_script('googlemapsapi'); // Enqueue it!
@@ -423,11 +398,11 @@ function gmap_header_scripts()
 
 
 
-function chilly_map( $atts, $content = null ) {
+function chilly_map($atts, $content = null) {
 
-    $attributes = shortcode_atts( array(
+    $attributes = shortcode_atts(array(
         'location' => "Chemin de Pra 1993, Veysonnaz, Suisse"
-    ), $atts );
+    ), $atts);
     $id = 'mapcontainer' .  rand(10000000, 99999999);
 
     $chilly_map = '<div id="' . $id .  '"></div>';
@@ -435,30 +410,28 @@ function chilly_map( $atts, $content = null ) {
     $chilly_map .= "<script>    jQuery(function () { get_map(' " . $attributes['location'] .  " ' ,  jQuery('#" . $id . "')   ) });  </script>";
 
     return $chilly_map;
-
-
 }
-add_shortcode( 'chilly_map', 'chilly_map' );
+add_shortcode('chilly_map', 'chilly_map');
 
 
-function remove_menus(){
+function remove_menus() {
     if (is_user_logged_in()) {
         $user = wp_get_current_user();
-        if ($user->user_login !== 'charles' && $user->user_login !== 'lily' && $user->user_login !== 'webfactor'  ) {
-            remove_menu_page( 'index.php' );                  //Dashboard
-            remove_menu_page( 'edit.php' );                   //Posts
+        if ($user->user_login !== 'charles' && $user->user_login !== 'lily' && $user->user_login !== 'webfactor') {
+            remove_menu_page('index.php');                  //Dashboard
+            remove_menu_page('edit.php');                   //Posts
             //remove_menu_page( 'upload.php' );                 //Media
-            remove_menu_page( 'edit-comments.php' );          //Comments
+            remove_menu_page('edit-comments.php');          //Comments
             // remove_menu_page( 'themes.php' );                 //Appearance
             // add_menu_page('Menu', 'Menu', 'manage_sites', 'nav-menus.php' );                 //Appearance
-            remove_menu_page( 'plugins.php' );                //Plugins
+            remove_menu_page('plugins.php');                //Plugins
             // remove_menu_page( 'users.php' );               //Users
-            remove_menu_page( 'tools.php' );                  //Tools
-            remove_menu_page( 'options-general.php' );        //Settings
-            remove_menu_page( 'profile.php' );        //Settings
+            remove_menu_page('tools.php');                  //Tools
+            remove_menu_page('options-general.php');        //Settings
+            remove_menu_page('profile.php');        //Settings
 
 
-            remove_menu_page( 'wpcf7' );
+            remove_menu_page('wpcf7');
         };
     };
 };  // end of remove_menus;
@@ -473,53 +446,53 @@ function remove_menus(){
 //add_action('admin_menu', 'remove_wpcf7');
 
 
-if( function_exists('acf_add_options_page') ) {
+if (function_exists('acf_add_options_page')) {
     acf_add_options_page(array(
-		'page_title' 	=> 'Popup',
-		'menu_title'	=> 'Popup',
-		'menu_slug' 	=> 'theme-general-settings',
-		'capability'	=> 'edit_posts',
-		'redirect'		=> false
-	));
+        'page_title'     => 'Popup',
+        'menu_title'    => 'Popup',
+        'menu_slug'     => 'theme-general-settings',
+        'capability'    => 'edit_posts',
+        'redirect'        => false
+    ));
 }
 
 
 
 function disable_wp_emojicons() {
 
-  // all actions related to emojis
-  remove_action( 'admin_print_styles', 'print_emoji_styles' );
-  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-  remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-  remove_action( 'wp_print_styles', 'print_emoji_styles' );
-  remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-  remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-  remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+    // all actions related to emojis
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
 
-  // filter to remove TinyMCE emojis
-  add_filter( 'tiny_mce_plugins', 'disable_emojicons_tinymce' );
+    // filter to remove TinyMCE emojis
+    add_filter('tiny_mce_plugins', 'disable_emojicons_tinymce');
 }
-add_action( 'init', 'disable_wp_emojicons' );
-function remove_json_api () {
+add_action('init', 'disable_wp_emojicons');
+function remove_json_api() {
 
     // Remove the REST API lines from the HTML Header
-    remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-    remove_action( 'wp_head', 'wp_oembed_add_discovery_links', 10 );
+    remove_action('wp_head', 'rest_output_link_wp_head', 10);
+    remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
     // Remove the REST API endpoint.
-    remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+    remove_action('rest_api_init', 'wp_oembed_register_route');
     // Turn off oEmbed auto discovery.
-    add_filter( 'embed_oembed_discover', '__return_false' );
+    add_filter('embed_oembed_discover', '__return_false');
     // Don't filter oEmbed results.
-    remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
+    remove_filter('oembed_dataparse', 'wp_filter_oembed_result', 10);
     // Remove oEmbed discovery links.
-    remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+    remove_action('wp_head', 'wp_oembed_add_discovery_links');
     // Remove oEmbed-specific JavaScript from the front-end and back-end.
-    remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-   // Remove all embeds rewrite rules.
-  // add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
+    remove_action('wp_head', 'wp_oembed_add_host_js');
+    // Remove all embeds rewrite rules.
+    // add_filter( 'rewrite_rules_array', 'disable_embeds_rewrites' );
 
 }
-add_action( 'after_setup_theme', 'remove_json_api' );
+// add_action( 'after_setup_theme', 'remove_json_api' );
 
 
 
@@ -531,4 +504,4 @@ add_action( 'after_setup_theme', 'remove_json_api' );
 // }
 // add_filter("login_redirect", "loginRedirect", 10, 3);
 
-?>
+    ?>
