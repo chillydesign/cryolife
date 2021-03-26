@@ -21,7 +21,7 @@
 	<link href="<?php echo $tdu; ?>/jquery.bxslider.css" rel="stylesheet" />
 	<link href="//cdn.rawgit.com/noelboss/featherlight/1.3.5/release/featherlight.min.css" type="text/css" rel="stylesheet" />
 	<link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.gallery.min.css" type="text/css" rel="stylesheet" />
-	<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+	<script src="//code.jquery.com/jquery-latest.js"></script>
 	<?php wp_head(); ?>
 
 
