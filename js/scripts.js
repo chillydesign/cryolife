@@ -4,6 +4,11 @@
 
 		'use strict';
 
+		var $window = $(window);
+		var $body = $('body');
+		var $document = $(document);
+
+
 		// $('.menu-item-has-children').on('hover', function(){
 		// 	$(this).children('ul.sub-menu').toogle();
 		// })
