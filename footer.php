@@ -44,10 +44,12 @@
 
 			<?php if ($show_popup) : ?>
 				<div class="popup_message" id="home_page_message">
-					<?php //echo do_shortcode('[contact-form-7 id="411" title="Inscription liste"]'); 
-					?>
-					<?php echo get_field('popup', 'option'); ?>
-					<a href="#" class="cancel_message">X</a>
+					<div class="popup_message_inner">
+						<?php //echo do_shortcode('[contact-form-7 id="411" title="Inscription liste"]'); 
+						?>
+						<?php echo get_field('popup', 'option'); ?>
+						<a href="#" class="cancel_message">X</a>
+					</div>
 				</div>
 			<?php endif; ?>
 
