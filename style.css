@@ -317,7 +317,9 @@ header {
     border-top: 3px solid white;
     position: absolute;
     top: 20px;
-    width: 100%;
+    left: 0;
+    width: 40%;
+    transform: translateX(75%);
 }
 
 .popup_message_inner h2:after {
