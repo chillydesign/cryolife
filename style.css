@@ -286,7 +286,7 @@ header {
 }
 
 .popup_message_inner:after {
-    background: url(img/cryolife-flake.png) no-repeat top right;
+    background: url(img/cryolife-flake.png) no-repeat 90% 70%;
     background-size: 300px;
     background-attachment: fixed;
     position: absolute;
@@ -295,7 +295,7 @@ header {
     width: 100%;
     z-index: -1;
     height: 100%;
-    opacity: 0.3;
+    opacity: 0.15;
     content: '';
 }
 
