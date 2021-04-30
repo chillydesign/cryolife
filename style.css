@@ -296,6 +296,7 @@ header {
     z-index: -1;
     height: 100%;
     opacity: 0.3;
+    content: '';
 }
 
 .popup_message_inner h2 {
