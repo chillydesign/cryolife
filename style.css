@@ -308,8 +308,22 @@ header {
     margin: -30px -30px 30px;
     display: block;
     padding: 30px 0;
+    position: relative;
 }
 
+.popup_message_inner h2:after,
+.popup_message_inner h2:before {
+    content: '';
+    border-top: 3px solid white;
+    position: absolute;
+    top: 20px;
+    width: 100%;
+}
+
+.popup_message_inner h2:after {
+    top: auto;
+    bottom: 20px;
+}
 
 .popup_message p {
     margin: 0;
@@ -323,7 +337,7 @@ header {
 
 
 .cancel_message {
-    background: #C50041;
+    background: #0C3E4F;
     position: absolute;
     top: 5px;
     right: 5px;
