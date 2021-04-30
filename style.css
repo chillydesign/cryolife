@@ -282,10 +282,21 @@ header {
 
 .popup_message .popup_message_inner {
     padding: 30px;
-    background: url(img/cryolife-flake.png) #0095C5 no-repeat top right;
-    background-size: 300px;
+    position: relative;
 }
 
+.popup_message_inner:after {
+    background: url(img/cryolife-flake.png) no-repeat top right;
+    background-size: 300px;
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+    opacity: 0.3;
+}
 
 .popup_message_inner h2 {
     background: #0095C5;
