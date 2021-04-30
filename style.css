@@ -285,6 +285,21 @@ header {
 
 }
 
+
+.popup_message_inner h2 {
+    background: url(img/cryolife-flake.png) #0095C5 no-repeat top right;
+    background-size: 100px;
+
+    border: 0;
+    text-align: center;
+    width: 100%;
+    color: white;
+    margin: -30px -30px 30px;
+    display: block;
+    padding: 30px 0;
+}
+
+
 .popup_message p {
     margin: 0;
 }
@@ -297,7 +312,7 @@ header {
 
 
 .cancel_message {
-    background: #0095C5;
+    background: #C50041;
     position: absolute;
     top: 5px;
     right: 5px;
