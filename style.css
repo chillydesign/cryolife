@@ -289,10 +289,8 @@ header {
 .popup_message_inner h2 {
     background: url(img/cryolife-flake.png) #0095C5 no-repeat top right;
     background-size: 100px;
-
     border: 0;
     text-align: center;
-    width: 100%;
     color: white;
     margin: -30px -30px 30px;
     display: block;
