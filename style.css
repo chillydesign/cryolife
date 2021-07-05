@@ -1601,6 +1601,19 @@ a img.aligncenter {
     padding: 0 4px 5px;
 }
 
+.youtube_container {
+    padding:28%;
+    position:relative;
+}
+
+.youtube_container iframe {
+    position: absolute;
+    top: 0;
+    left:0;
+    height:100%;
+    width: 100%;
+}
+
 .sticky {}
 
 .bypostauthor {}
