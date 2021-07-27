@@ -138,7 +138,6 @@ if( have_rows('sections') ) {
 		<?php $banner = get_sub_field('banner'); ?>
 
 			<section class="slider  section<?php echo $sectionnumber; ?> <?php if($banner){echo 'headerbanner';} ?>">
-			<div class="showme" style="display:none;">
 			<?php while ( have_rows('slide') ) : the_row(); ?>
 				<?php $image = get_sub_field('image'); ?>
 				<?php $text = get_sub_field('text'); ?>
@@ -146,8 +145,7 @@ if( have_rows('sections') ) {
 				<div class="wrapper"><?php the_sub_field('text'); ?></div>
 				</div>
 			<?php endwhile ?>
-
-			</div>
+				<!-- <?php if:false; ?> old slider - careful, this is not very nicely responsive  -->
 				<ul class="bxslider">
 					<?php while ( have_rows('slide') ) : the_row(); ?>
 						 	<?php $image = get_sub_field('image'); ?>
@@ -160,6 +158,7 @@ if( have_rows('sections') ) {
 					<?php endwhile ?>
 
 				</ul>
+				<?php endif;?> <!--  end of removed slider -->
 			</section>
 
 		<?php }
