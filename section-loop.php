@@ -141,7 +141,7 @@ if( have_rows('sections') ) {
 			<?php while ( have_rows('slide') ) : the_row(); ?>
 				<?php $image = get_sub_field('image'); ?>
 				<?php $text = get_sub_field('text'); ?>
-				<div class="banner" style="background-image: <?php echo $image['url']; ?>">
+				<div class="banner" style="background-image: url(<?php echo $image['url']; ?>);">
 				<div class="wrapper"><?php the_sub_field('text'); ?></div>
 				</div>
 			<?php endwhile ?>
