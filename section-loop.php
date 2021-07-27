@@ -137,7 +137,7 @@ if( have_rows('sections') ) {
 		<?php $banner = get_sub_field('banner'); ?>
 
 			<section class="slider  <?php if($banner){echo 'headerbanner';} ?>">
-			<div style="display:none;">
+			<div class="showme" style="display:none;">
 			<?php while ( have_rows('slide') ) : the_row(); ?>
 				<?php $image = get_sub_field('image'); ?>
 				<?php $text = get_sub_field('text'); ?>
