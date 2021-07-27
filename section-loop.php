@@ -144,6 +144,7 @@ if( have_rows('sections') ) {
 				<div class="banner" style="background-image: <?php echo $image['url']; ?>">
 				<div class="wrapper"><?php the_sub_field('text'); ?></div>
 				</div>
+			<?php endwhile ?>
 
 			</div>
 				<ul class="bxslider">
