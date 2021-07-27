@@ -145,7 +145,7 @@ if( have_rows('sections') ) {
 				<div class="wrapper"><?php the_sub_field('text'); ?></div>
 				</div>
 			<?php endwhile ?>
-				<!-- <?php if:false; ?> old slider - careful, this is not very nicely responsive  -->
+				<?php if:false; ?> <!-- old slider - careful, this is not very nicely responsive  -->
 				<ul class="bxslider">
 					<?php while ( have_rows('slide') ) : the_row(); ?>
 						 	<?php $image = get_sub_field('image'); ?>
