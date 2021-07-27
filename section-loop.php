@@ -2,6 +2,7 @@
 
 if( have_rows('sections') ) {
 	while ( have_rows('sections') ) : the_row();
+	$sectionnumber=1;
 
 		if (get_row_layout() == 'simple') {
 			$backgroundclass = get_sub_field('background');
@@ -136,7 +137,7 @@ if( have_rows('sections') ) {
 		elseif (get_row_layout() == 'slider') { ?>
 		<?php $banner = get_sub_field('banner'); ?>
 
-			<section class="slider  <?php if($banner){echo 'headerbanner';} ?>">
+			<section class="slider  section<?php echo $sectionnumber; ?> <?php if($banner){echo 'headerbanner';} ?>">
 			<div class="showme" style="display:none;">
 			<?php while ( have_rows('slide') ) : the_row(); ?>
 				<?php $image = get_sub_field('image'); ?>
@@ -267,7 +268,7 @@ if( have_rows('sections') ) {
 
 
 
-
+	$sectionnumber++;
 	endwhile;
 }
 ?>
