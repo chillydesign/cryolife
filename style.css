@@ -1202,10 +1202,22 @@ button.bookly-round-button {
 }
 
 .album li {
-    width: calc(25%);
+    width: 100%;
     padding: 10px;
     min-width: 180px;
 }
+
+@media (min-width: 530px) {
+    .album li {
+        width: calc(50%);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .album li {
+        width: calc(25%);
+    }
+  }
 
 iframe {
     width: 100%;
