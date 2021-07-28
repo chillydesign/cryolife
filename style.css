@@ -1165,6 +1165,10 @@ button.bookly-round-button {
 .album li {
     display: inline-block;
 }
+.album li p {
+    text-align: left;
+}
+
 
 .album_titles {
     margin-bottom: 20px;
