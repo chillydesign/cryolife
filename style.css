@@ -1625,6 +1625,19 @@ a img.aligncenter {
 
 .bypostauthor {}
 
+.featherlight-next:hover, .featherlight-previous:hover {
+    background: none!important;
+}
+.featherlight-next span, .featherlight-previous span {
+    color: white;
+    font-size: 20px!important;
+    background: rgb(0 149 197 / 50%);
+    height: 100px;
+    width: 40px;
+    line-height: 100px;
+    border-radius: 10px;
+}
+
 /*------------------------------------*\
     PRINT
 \*------------------------------------*/
