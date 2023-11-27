@@ -504,4 +504,13 @@ add_action('after_setup_theme', 'remove_json_api');
 // }
 // add_filter("login_redirect", "loginRedirect", 10, 3);
 
+add_action('admin_head', 'my_custom_fonts');
+
+function my_custom_fonts() {
+    echo '<style>
+ .js .tmce-active .wp-editor-area {     color:#000!important;  }
+  </style>';
+}
+
+
     ?>
